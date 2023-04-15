@@ -26,5 +26,7 @@ Route::get("/fillable",[GrudController::class,"getFillable"]);
 Route::prefix('offers')->group(function () {
     Route::get("store",[GrudController::class,"store"]);
     Route::get("create",[GrudController::class,"create"]);
+    Route::post("store",[GrudController::class,"store"])->name("offers.store");
+
 
 });

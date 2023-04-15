@@ -14,20 +14,37 @@ class GrudController extends Controller
         # code...
       return   Offer::select("id","name")->get();
     }
-     public function store() // insert or add data to dataBase 
-     {
+    //  public function store() // insert or add data to dataBase 
+    //  {
 
-       Offer::create([
-        "name" => "offer3",
-        "price" => "500",
-        "photo" => "offer3.png",
-        "details" => "Offer 3 details"
-       ]);
-     }
+    //    Offer::create([
+    //     "name" => "offer3",
+    //     "price" => "500",
+    //     "photo" => "offer3.png",
+    //     "details" => "Offer 3 details"
+    //    ]);
+    //  }
 
      ///////// insert data to data base by form 
      public function create()
      {
-        # code...
+        return view("offers.create");
      }
+      public function store(Request $re)
+      {
+        # code...
+        //  return $re ;
+
+        /// validate before insert data 
+
+        /// insert data to data base after validate
+
+       Offer::create([
+        "name"=> $re->name ,
+        "price" => $re -> price ,
+        "details" => $re -> details
+       ]);
+        return "Savesd Data " ;
+
+      }
 }
