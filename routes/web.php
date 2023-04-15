@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GrudController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,10 @@ Route::get('/', function () {
 Auth::routes(["verify" => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware("verified");
+Route::get("/fillable",[GrudController::class,"getFillable"]);
+
+Route::prefix('offers')->group(function () {
+    Route::get("store",[GrudController::class,"store"]);
+    Route::get("create",[GrudController::class,"create"]);
+
+});
