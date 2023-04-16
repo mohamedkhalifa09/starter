@@ -64,12 +64,37 @@
     </style>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                <li class="nav-item active">
+                    <a class="nav-link"
+                       href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"> {{ $properties['native'] }}
+                        <span class="sr-only">(current)</span></a>
+                </li>
+            @endforeach
+
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
 
 
 <div class="flex-center position-ref full-height">
     <div class="content">
         <div class="title m-b-md">
-            Add your offer
+            {{__("messages.Add your offer")}}
 
         </div>
        @if(Session::has("success"))
@@ -82,8 +107,8 @@
             <div class="form-group">
                 @csrf
                 {{-- <input type="_token" value="{{csrf_token()}}" style="display: hidden"> --}}
-              <label for="exampleInputEmail1">Offer Name</label>
-              <input type="text" class="form-control" name="name" aria-describedby="emailHelp" placeholder="Enter Offer Name">
+              <label for="exampleInputEmail1">{{__("messages.Offer Name")}}</label>
+              <input type="text" class="form-control" name="name" aria-describedby="emailHelp" placeholder='{{__("messages.Enter Offer Name")}}'>
               @error('name')
               <div class="alert alert-danger mt-1" role="alert">
                 {{$message}}
@@ -92,8 +117,8 @@
               {{-- <small  class="form-text text-danger">We'll never share your email with anyone else.</small> --}}
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Offer Price</label>
-              <input type="text" class="form-control" name="price" placeholder="Enter Offer Price">
+              <label for="exampleInputPassword1">{{__("messages.Offer Price")}}</label>
+              <input type="text" class="form-control" name="price" placeholder='{{__("messages.Enter Offer Price")}}'>
               @error('price')
               <div class="alert alert-danger mt-1" role="alert">
                 {{$message}}
@@ -101,8 +126,8 @@
               @enderror
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Offer Details</label>
-                <input type="text" class="form-control" name="details" placeholder="Enter Offer Details">
+                <label for="exampleInputPassword1">{{__("messages.Offer Details")}}</label>
+                <input type="text" class="form-control" name="details" placeholder='{{__("messages.Enter Offer Details")}}'>
                  @error('details')
                 <div class="alert alert-danger mt-1" role="alert">
                   {{$message}}
@@ -113,7 +138,7 @@
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">Check me out</label>
             </div> --}}
-            <button type="submit" class="btn btn-primary">Save Offer</button>
+            <button type="submit" class="btn btn-primary">{{__("messages.Save Offer")}}</button>
           </form>
 
 

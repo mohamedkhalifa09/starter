@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Offer;
 // use Illuminate\Support\Facades;
+use App\Http\Requests\OfferRequest;
 use Illuminate\Support\Facades\Validator;
 
 class GrudController extends Controller
@@ -32,23 +33,9 @@ class GrudController extends Controller
      {
         return view("offers.create");
      }
-      public function store(Request $re)
+      public function store(OfferRequest $re)
       {
-        # code...
-        //  return $re ;
-
-        /// validate before insert data 
-
-         $rules = $this->getrules();
-
-         $messages = $this->getmessages();
-
-        $validator = Validator::make($re->all(),$rules,$messages);
-        if ($validator ->fails()) {
-        //  return $validator->errors();
-        return redirect()->back()->withErrors($validator)->withInputs($re->all());
-        }
-
+        
         /// insert data to data base after validate
 
        Offer::create([
@@ -56,24 +43,8 @@ class GrudController extends Controller
         "price" => $re -> price ,
         "details" => $re -> details
        ]);
-       return redirect()->back()->with(["success" => "Successful Added Your Offer"]);
+       return redirect()->back()->with(["success" => __("messages.Successful Added Your Offer")]);
 
 
       }
-
-      protected function getmessages(){
-        return  [
-          "name.required" => "Offer name is  Required",
-          "name.unique" => "offer name must be unique",
-          "price.numeric" => " price offer must be Number",
-          "details.required" => "Offer details are  Required",
-        ] ;
-      }
-       protected function getrules(){
-        return  [
-          "name"=> "required|max:100|unique:offers,name",
-          "price" => "required|numeric|max:1000",
-          "details"=>"required"
-        ];
-       }
 }
