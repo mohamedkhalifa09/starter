@@ -72,9 +72,11 @@
             Add your offer
 
         </div>
-       
-        
-
+       @if(Session::has("success"))
+        <div class="alert alert-success" role="alert">
+            {{Session::get("success")}}
+          </div>
+          @endif
         <br>
         <form method="POST" action="{{route('offers.store')}}">
             <div class="form-group">
@@ -82,15 +84,30 @@
                 {{-- <input type="_token" value="{{csrf_token()}}" style="display: hidden"> --}}
               <label for="exampleInputEmail1">Offer Name</label>
               <input type="text" class="form-control" name="name" aria-describedby="emailHelp" placeholder="Enter Offer Name">
-              {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+              @error('name')
+              <div class="alert alert-danger mt-1" role="alert">
+                {{$message}}
+              </div>
+              @enderror
+              {{-- <small  class="form-text text-danger">We'll never share your email with anyone else.</small> --}}
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Offer Price</label>
               <input type="text" class="form-control" name="price" placeholder="Enter Offer Price">
+              @error('price')
+              <div class="alert alert-danger mt-1" role="alert">
+                {{$message}}
+              </div>
+              @enderror
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Offer Details</label>
                 <input type="text" class="form-control" name="details" placeholder="Enter Offer Details">
+                 @error('details')
+                <div class="alert alert-danger mt-1" role="alert">
+                  {{$message}}
+                </div>
+                @enderror
               </div>
             {{-- <div class="form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
