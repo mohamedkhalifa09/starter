@@ -18,7 +18,11 @@ return [
  "Offer Details"=>"Offer Details",
  "Enter Offer Details"=>"Enter Offer Details",
  "Save Offer"=>"Save Offer",
- "Successful Added Your Offer" => "Successful Added Your Offer"
+ "Successful Added Your Offer" => "Successful Added Your Offer",
+ "Arabic Offer Name" => "Offer Name Arabic" ,
+ "Enter Arabic Offer Name" => "Enter Arabic Offer Name",
+ "Arabic Offer Details" => "Arabic Offer Details",
+ "Enter Arabic Offer Details" => "Enter Arabic Offer Details"
 
 
 

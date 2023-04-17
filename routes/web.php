@@ -29,10 +29,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::group(['prefix' => 'offers'], function () {
             //   Route::get('store', 'CrudController@store');
         Route::get("create",[GrudController::class,"create"]);
-       
+        Route::get("all",[GrudController::class,"getAllOffers"]);
+        Route::post("store",[GrudController::class,"store"])->name("offers.store");
+        
         });
+
     // Route::get("store",[GrudController::class,"store"]);
-    Route::post("store",[GrudController::class,"store"])->name("offers.store");
 
    
 

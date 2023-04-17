@@ -20,7 +20,11 @@ return [
  "Offer Details"=>"تفاصيل العرض",
  "Enter Offer Details"=>"ادخل تفاصيل العرض",
  "Save Offer"=>"تسجيل العرض",
- "Successful Added Your Offer" => "تم اضافة العرض بنجاح"
+ "Successful Added Your Offer" => "تم اضافة العرض بنجاح",
+ "Arabic Offer Name" => "اسم العرض بالعربية" ,
+ "Enter Arabic Offer Name" => "ادخل اسم العرض بالعربية ",
+ "Arabic Offer Details" => "تفاصيل العرض بالعربية",
+ "Enter Arabic Offer Details" => "ادخل تفاصيل العرض بالعربية"
 
 
 

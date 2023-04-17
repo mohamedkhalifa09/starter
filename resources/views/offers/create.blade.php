@@ -104,12 +104,25 @@
           @endif
         <br>
         <form method="POST" action="{{route('offers.store')}}">
+            @csrf
             <div class="form-group">
-                @csrf
+               
                 {{-- <input type="_token" value="{{csrf_token()}}" style="display: hidden"> --}}
               <label for="exampleInputEmail1">{{__("messages.Offer Name")}}</label>
-              <input type="text" class="form-control" name="name" aria-describedby="emailHelp" placeholder='{{__("messages.Enter Offer Name")}}'>
-              @error('name')
+              <input type="text" class="form-control" name="name_en" aria-describedby="emailHelp" placeholder='{{__("messages.Enter Offer Name")}}'>
+              @error('name_en')
+              <div class="alert alert-danger mt-1" role="alert">
+                {{$message}}
+              </div>
+              @enderror
+              {{-- <small  class="form-text text-danger">We'll never share your email with anyone else.</small> --}}
+            </div>
+            <div class="form-group">
+               
+                {{-- <input type="_token" value="{{csrf_token()}}" style="display: hidden"> --}}
+              <label for="exampleInputEmail1">{{__("messages.Arabic Offer Name")}}</label>
+              <input type="text" class="form-control" name="name_ar" aria-describedby="emailHelp" placeholder='{{__("messages.Enter Arabic Offer Name")}}'>
+              @error('name_ar')
               <div class="alert alert-danger mt-1" role="alert">
                 {{$message}}
               </div>
@@ -126,9 +139,18 @@
               @enderror
             </div>
             <div class="form-group">
+                <label for="exampleInputPassword1">{{__("messages.Arabic Offer Details")}}</label>
+                <input type="text" class="form-control" name="details_ar" placeholder='{{__("messages.Enter Arabic Offer Details")}}'>
+                 @error('details_ar')
+                <div class="alert alert-danger mt-1" role="alert">
+                  {{$message}}
+                </div>
+                @enderror
+              </div>
+              <div class="form-group">
                 <label for="exampleInputPassword1">{{__("messages.Offer Details")}}</label>
-                <input type="text" class="form-control" name="details" placeholder='{{__("messages.Enter Offer Details")}}'>
-                 @error('details')
+                <input type="text" class="form-control" name="details_en" placeholder='{{__("messages.Enter Offer Details")}}'>
+                 @error('details_en')
                 <div class="alert alert-danger mt-1" role="alert">
                   {{$message}}
                 </div>
