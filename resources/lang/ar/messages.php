@@ -24,7 +24,16 @@ return [
  "Arabic Offer Name" => "اسم العرض بالعربية" ,
  "Enter Arabic Offer Name" => "ادخل اسم العرض بالعربية ",
  "Arabic Offer Details" => "تفاصيل العرض بالعربية",
- "Enter Arabic Offer Details" => "ادخل تفاصيل العرض بالعربية"
+ "Enter Arabic Offer Details" => "ادخل تفاصيل العرض بالعربية",
+ "Operation" =>"العمليات",
+ "update" =>"تعديل",
+ "Edit your offer" => "تحديث العرض ",
+ "Edit Offer" => "تحديث العرض",
+ "Successful Update Your Offer" => "تم تحديث العرض بنجاح"
+
+
+
+ 
 
 
 

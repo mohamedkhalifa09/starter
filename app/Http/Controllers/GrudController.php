@@ -63,4 +63,28 @@ class GrudController extends Controller
      return view('offers.all',compact(["offers"]));
 
       }
+      ////// edit offer by Id 
+      public function editOffer($offer_id)
+      {
+        // Offer::findOrFail($offer_id);// to seach in database
+    $offer =  Offer::find($offer_id);
+    if (!$offer) {
+      return redirect()->back();
+    }
+    $offers = Offer::select("id","name_ar","name_en","details_ar","details_en","price")->find($offer_id);
+    return view("offers.edit",compact("offers"));
+        // return $offer_id ;
+      }
+      public function updateOffer(OfferRequest $re,$offer_id)
+      {
+        $offer = Offer::select("id","name_ar","name_en","price","details_en","details_ar")->find($offer_id);
+        if (!$offer) {
+          return redirect()->back();
+        }
+
+        // update offer
+       $offer->update($re->all());
+       return redirect()->back()->with(["success" => __("messages.Successful Update Your Offer")]);
+
+      }
 }

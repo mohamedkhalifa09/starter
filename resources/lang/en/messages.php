@@ -22,7 +22,14 @@ return [
  "Arabic Offer Name" => "Offer Name Arabic" ,
  "Enter Arabic Offer Name" => "Enter Arabic Offer Name",
  "Arabic Offer Details" => "Arabic Offer Details",
- "Enter Arabic Offer Details" => "Enter Arabic Offer Details"
+ "Enter Arabic Offer Details" => "Enter Arabic Offer Details",
+ "Operation" =>"Operation",
+ "update"=>"Update",
+ "Edit your offer" => "Edit your offer",
+ "Edit Offer" => "Edit Offer",
+ "Successful Update Your Offer" => "Successful Update Your Offer"
+ 
+
 
 
 
