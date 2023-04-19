@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\VideoViewer;
 use Illuminate\Http\Request;
 use App\Models\Offer;
-// use Illuminate\Support\Facades;
-use LaravelLocalization;
+// use Illuminate\Support\Facades;z
+
 use App\Http\Requests\OfferRequest;
+use App\Models\Video;
+use App\Traits\OfferTraits;
 use Illuminate\Support\Facades\Validator;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class GrudController extends Controller
 {
     //
-
+  use OfferTraits;
     public function getFillable() // select or show 
     {
         # code...
@@ -36,10 +40,21 @@ class GrudController extends Controller
      }
       public function store(OfferRequest $re)
       {
-        
+        // save image in folder 
+
+      
+
+        $file_name = $this -> getImages($re->photo,"images/offers");
+
+      
+      
+
+
+
         /// insert data to data base after validate
 
        Offer::create([
+        "photo" => $file_name ,
         "name_ar"=> $re->name_ar ,
         "name_en"=> $re->name_en ,
         "price" => $re -> price ,
@@ -71,13 +86,13 @@ class GrudController extends Controller
     if (!$offer) {
       return redirect()->back();
     }
-    $offers = Offer::select("id","name_ar","name_en","details_ar","details_en","price")->find($offer_id);
+    $offers = Offer::select("id","name_ar","name_en","photo","details_ar","details_en","price")->find($offer_id);
     return view("offers.edit",compact("offers"));
         // return $offer_id ;
       }
       public function updateOffer(OfferRequest $re,$offer_id)
       {
-        $offer = Offer::select("id","name_ar","name_en","price","details_en","details_ar")->find($offer_id);
+        $offer = Offer::select("id","name_ar","name_en","price","photo","details_en","details_ar")->find($offer_id);
         if (!$offer) {
           return redirect()->back();
         }
@@ -87,4 +102,15 @@ class GrudController extends Controller
        return redirect()->back()->with(["success" => __("messages.Successful Update Your Offer")]);
 
       }
+
+      public function getVideo()
+      {
+
+        $video = Video::first();
+        event(new VideoViewer($video));
+        return view("video")->with("video",$video);
+      }
+
+
+      
 }

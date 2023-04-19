@@ -103,8 +103,20 @@
           </div>
           @endif
         <br>
-        <form method="POST" action="{{route('offers.store')}}">
+        <form method="POST" action="{{route('offers.store')}}" enctype="multipart/form-data">
             @csrf
+            <div class="form-group">
+               
+              {{-- <input type="_token" value="{{csrf_token()}}" style="display: hidden"> --}}
+            <label for="exampleInputEmail1">{{__("messages.Offer Photo")}}</label>
+            <input type="file" class="form-control" name="photo" aria-describedby="emailHelp" placeholder='{{__("messages.Enter Offer Photo")}}'>
+            @error('photo')
+            <div class="alert alert-danger mt-1" role="alert">
+              {{$message}}
+            </div>
+            @enderror
+            {{-- <small  class="form-text text-danger">We'll never share your email with anyone else.</small> --}}
+          </div>
             <div class="form-group">
                
                 {{-- <input type="_token" value="{{csrf_token()}}" style="display: hidden"> --}}

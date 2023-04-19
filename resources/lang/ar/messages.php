@@ -29,7 +29,9 @@ return [
  "update" =>"تعديل",
  "Edit your offer" => "تحديث العرض ",
  "Edit Offer" => "تحديث العرض",
- "Successful Update Your Offer" => "تم تحديث العرض بنجاح"
+ "Successful Update Your Offer" => "تم تحديث العرض بنجاح",
+ "Enter Offer Photo" => "ادخل صور العرض",
+ "Offer Photo" => "صورة العرض"
 
 
 

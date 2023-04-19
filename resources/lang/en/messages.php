@@ -27,7 +27,9 @@ return [
  "update"=>"Update",
  "Edit your offer" => "Edit your offer",
  "Edit Offer" => "Edit Offer",
- "Successful Update Your Offer" => "Successful Update Your Offer"
+ "Successful Update Your Offer" => "Successful Update Your Offer",
+ "Enter Offer Photo" => "Enter Offer Photo",
+ "Offer Photo" => "Offer Photo"
  
 
 
