@@ -74,6 +74,7 @@ class GrudController extends Controller
      $offers = Offer::select("id",
      "name_".LaravelLocalization::getCurrentLocale()." as name",
      "price",
+     "photo",
      "details_".LaravelLocalization::getCurrentLocale()." as details")->get();
      return view('offers.all',compact(["offers"]));
 
@@ -101,6 +102,23 @@ class GrudController extends Controller
        $offer->update($re->all());
        return redirect()->back()->with(["success" => __("messages.Successful Update Your Offer")]);
 
+      }
+      public function deleteOffer($offer_id)
+      {
+        
+        $offer = Offer::find($offer_id);   // Offer::where('id','$offer_id') -> first();
+
+        if (!$offer)
+            return redirect()->back()->with(['error' => __('messages.Offer not Existed')]);
+
+        $offer->delete();
+
+        return redirect()
+            ->route('offers.all')
+            ->with(['success' => __('messages.Successful Deleted Offer')]);
+
+
+       
       }
 
       public function getVideo()

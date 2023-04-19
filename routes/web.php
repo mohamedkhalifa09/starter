@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GrudController;
+use App\Http\Controllers\OfferController;
 use Illuminate\Support\Facades\Auth;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -36,15 +37,24 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::get("edit/{offer_id}",[GrudController::class,"editOffer"]);
 
         Route::post("update/{offer_id}",[GrudController::class,"updateOffer"])->name("offers.update");
+        Route::get("delete/{offer_id}",[GrudController::class,"deleteOffer"])->name("offers.delete");
+
 
         
         });
-
+    });
+         // Route::get("store",[GrudController::class,"store"]);
         Route::get("video",[GrudController::class,"getVideo"]);
+        /////////////////////----- Ajax Offers ----////////////
 
-    // Route::get("store",[GrudController::class,"store"]);
+        
 
-   
+            Route::group(['prefix' => 'ajax-offers'], function () {
+                
+        Route::get("create",[OfferController::class,"create"]);
+        Route::post("store",[OfferController::class,"store"])->name('ajax.offer.store');
 
-
-});
+            
+    
+            
+            });

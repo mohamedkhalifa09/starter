@@ -31,7 +31,13 @@ return [
  "Edit Offer" => "تحديث العرض",
  "Successful Update Your Offer" => "تم تحديث العرض بنجاح",
  "Enter Offer Photo" => "ادخل صور العرض",
- "Offer Photo" => "صورة العرض"
+ "Offer Photo" => "صورة العرض",
+ "Delete" => "حذف",
+ "Offer not Existed" => "هذا العرض عير موجود ",
+ "Successful Deleted Offer" => "تم حذف العرض بنجاح ",
+
+
+
 
 
 
