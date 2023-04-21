@@ -19,6 +19,7 @@ return [
  "Enter Offer Details"=>"Enter Offer Details",
  "Save Offer"=>"Save Offer",
  "Successful Added Your Offer" => "Successful Added Your Offer",
+ "Failed Added Your Offer please Try Again" => "Failed Added Your Offer please Try Again",
  "Arabic Offer Name" => "Offer Name Arabic" ,
  "Enter Arabic Offer Name" => "Enter Arabic Offer Name",
  "Arabic Offer Details" => "Arabic Offer Details",
@@ -32,7 +33,8 @@ return [
  "Successful Deleted Offer" => "Successful Deleted Offer",
  "Successful Update Your Offer" => "Successful Update Your Offer",
  "Enter Offer Photo" => "Enter Offer Photo",
- "Offer Photo" => "Offer Photo"
+ "Offer Photo" => "Offer Photo",
+ "Delete Ajax" => "Delete Ajax"
  
 
 

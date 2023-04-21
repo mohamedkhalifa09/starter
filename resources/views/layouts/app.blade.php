@@ -16,7 +16,9 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    
 </head>
+
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -32,7 +34,7 @@
                                 <span class="sr-only">(current)</span></a>
                         </li>
                     @endforeach
-                 <a href="{{route("offers.all")}}" target="_blank" class="btn btn-primary" style="margin-left: 20px"> All Offers </a>
+                 <a href="{{route("ajax.offers.all")}}" target="_blank" class="btn btn-primary" style="margin-left: 20px"> All Offers </a>
         
                 </ul>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

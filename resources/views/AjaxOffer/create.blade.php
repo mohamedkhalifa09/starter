@@ -3,19 +3,18 @@
 
 @section("content")
 <div class="container" style="width:50%">
+   <div class="alert alert-success text-center " style="display: none" id="success_msg">
+         {{__("messages.Successful Added Your Offer")}}
+     </div>
 <div class="flex-center position-ref full-height">
   <div class="content">
-      <div class="title m-b-md text-center" style="font-size: 50px">
+      <div class="title m-b-md text-center" style="font-size: 50px" id="success_msg">
           {{__("messages.Add your offer")}}
 
       </div>
-     @if(Session::has("success"))
-      <div class="alert alert-success" role="alert">
-          {{Session::get("success")}}
-        </div>
-        @endif
+    
       <br>
-      <form method="POST" action="" enctype="multipart/form-data">
+      <form method="POST" id="offerForm" enctype="multipart/form-data">
           @csrf
           <div class="form-group">
              
@@ -96,23 +95,33 @@
 <script>
 $(document).on("click","#save_offer",function(e){
   e.preventDefault();
+  var formData = new FormData($('#offerForm')[0]);
   $.ajax({
-type:"post",
-url:"{{route('ajax.offer.store')}}",
-data:{
-  "_token" : "{{csrf_token()}}",
-  // "photo" : $("input[name='photo']").val(),
-  "name_ar" : $("input[name='name_ar']").val(),
-  "name_en" : $("input[name='name_en']").val(),
-  "price" : $("input[name='price']").val(),
-  "details_ar" : $("input[name='details_ar']").val(),
-  "details_en" : $("input[name='details_en']").val(),
+                type: 'post',
+                enctype: 'multipart/form-data',
+                url: "{{route('ajax.offers.store')}}",
+                data: formData,
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function (data) {
+                  if (data.status == true) {
+                    $("#success_msg").show();
+                  }
+                },
+            });
+        });
 
-},
-});
-});
+// data:{
+//   "_token" : "{{csrf_token()}}",
+//   // "photo" : $("input[name='photo']").val(),
+//   "name_ar" : $("input[name='name_ar']").val(),
+//   "name_en" : $("input[name='name_en']").val(),
+//   "price" : $("input[name='price']").val(),
+//   "details_ar" : $("input[name='details_ar']").val(),
+//   "details_en" : $("input[name='details_en']").val(),
 
-
+// },
 
 
 

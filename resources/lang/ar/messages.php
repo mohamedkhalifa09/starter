@@ -35,6 +35,10 @@ return [
  "Delete" => "حذف",
  "Offer not Existed" => "هذا العرض عير موجود ",
  "Successful Deleted Offer" => "تم حذف العرض بنجاح ",
+ "Failed Added Your Offer please Try Again" => "فشل في اضافة البيانات  برجاء حاول مرة اخري",
+ "Delete Ajax" => "حدف بالاجاكس"
+
+
 
 
 
