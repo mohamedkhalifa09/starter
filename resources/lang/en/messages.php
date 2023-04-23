@@ -34,7 +34,11 @@ return [
  "Successful Update Your Offer" => "Successful Update Your Offer",
  "Enter Offer Photo" => "Enter Offer Photo",
  "Offer Photo" => "Offer Photo",
- "Delete Ajax" => "Delete Ajax"
+ "Delete Ajax" => "Delete Ajax",
+ "update Ajax" => "Update Ajax",
+ "This offer Not Found" => "This offer Not Found",
+ "successful updated your offer" => "Successful updated your offer",
+ "Login Admin" => "Login Admin",
  
 
 

@@ -80,7 +80,7 @@
                         <span class="sr-only">(current)</span></a>
                 </li>
             @endforeach
-         <a href="{{route("offers.all")}}" target="_blank" class="btn btn-primary" style="margin-left: 20px"> All Offers </a>
+         <a href="{{route("ajax.offers.all")}}" target="_blank" class="btn btn-primary" style="margin-left: 20px"> All Offers </a>
 
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -93,7 +93,7 @@
 
 <div class="flex-center position-ref full-height">
     <div class="content">
-        <div class="title m-b-md">
+        <div class="title m-b-md" style="margin-top: 300px">
             {{__("messages.Edit your offer") }} {{$offers->id}}
 
         </div>
@@ -111,6 +111,23 @@
               <img class="form-control" style="width: 200px; height: 200px;" src="{{asset('images/offers/'.$offers->photo)}}">
   
                 </div>
+                            
+
+            <div class="form-group">
+              
+                <label class="text-center" style="font-size: 17px" for="exampleInputEmail1">{{__("messages.Offer Photo")}}</label>
+                <input type="file" class="form-control" name="photo" aria-describedby="emailHelp" placeholder='{{__("messages.Enter Offer Photo")}}'>
+                @error('photo')
+                <div class="alert alert-danger mt-1" role="alert">
+                  {{$message}}
+                </div>
+                @enderror
+                {{-- <small  class="form-text text-danger">We'll never share your email with anyone else.</small> --}}
+              </div>
+
+
+
+
                
             <div class="form-group">
                

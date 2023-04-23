@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomAuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GrudController;
 use App\Http\Controllers\OfferController;
@@ -20,6 +21,10 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get("dashboard",function(){
+    return "You Are Not Adult";
+})->name("not.adult");
 
 Auth::routes(["verify" => true]);
 
@@ -44,7 +49,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         });
     });
          // Route::get("store",[GrudController::class,"store"]);
-        Route::get("video",[GrudController::class,"getVideo"]);
+        Route::get("video",[GrudController::class,"getVideo"])->middleware("auth:web");
         /////////////////////----- Ajax Offers ----////////////
 
         Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
@@ -55,9 +60,42 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::post("store",[OfferController::class,"store"])->name('ajax.offers.store');
         Route::get("all",[OfferController::class,"all"])->name("ajax.offers.all");        Route::get("all",[OfferController::class,"all"])->name("ajax.offers.all");
         Route::post("delete",[OfferController::class,"delete"])->name("ajax.offers.delete");
+        Route::get("edit/{offer_id}",[OfferController::class,"edit"])->name("ajax.offers.edit");
+
+        Route::post("update",[OfferController::class,"update"])->name("ajax-offers.update");
          
             
     
             
             });
         });
+        ######################End Ajax Grud #############################
+
+        #####################Authentication  &&& Guard #################
+
+
+        
+   
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
+
+
+
+    Route::get("adult",[CustomAuthController::class,"index"])->name("adults.index")->middleware("CheckAge");
+     
+   Route::get("site",[CustomAuthController::class,"site"])->name("site")->middleware("auth:web");
+   Route::get("admin",[CustomAuthController::class,"admin"])->name("admin")->middleware("auth:admin");
+   Route::get("admin/login",[CustomAuthController::class,"adminLogin"])->name("admin.login");
+   Route::post("admin/login",[CustomAuthController::class,"checkAdminLogin"])->name("admin.login");
+   
+
+
+
+});
+ 
+
+    
+ 
+
+
+
+      #####################End  Authentication  &&& Guard #################

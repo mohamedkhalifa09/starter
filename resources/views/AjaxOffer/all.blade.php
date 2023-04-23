@@ -25,7 +25,7 @@
         <th scope="col">{{__('messages.Offer Price')}}</th>
         <th scope="col">{{__('messages.Offer Details')}}</th>
         <th scope="col">{{__('messages.Offer Photo')}}</th>
-        <th scope="col">{{__('messages.Operation')}}</th>
+        <th class="text-center" style="margain-left:-20px" scope="col">{{__('messages.Operation')}}</th>
 
       </tr>
     </thead>
@@ -37,9 +37,11 @@
             <td>{{$offer->price}}</td>
             <td>{{$offer->details}}</td>
             <td><img  style="width: 90px; height: 90px;" src="{{asset('images/offers/'.$offer->photo)}}"></td>
-            <td><a style="margin-left: 10px "  href="{{url('offers/edit/'.$offer->id)}}" class="btn btn-success">{{__("messages.update")}}</a>
-                <a href="{{route('offers.delete',$offer->id)}}" class="btn btn-danger ml-1">{{__("messages.Delete")}}</a>
-                <a href="" id="" offer_id={{$offer->id}} class="btn btn-danger delete_btn">{{__("messages.Delete Ajax")}}</a>
+            <td><a style="margin-left: 10px"  href="{{url('offers/edit/'.$offer->id)}}" class="btn btn-success">{{__("messages.update")}}</a>
+                <a style="margin-left: 10px" href="{{route('offers.delete',$offer->id)}}" class="btn btn-danger ml-1">{{__("messages.Delete")}}</a>
+                <a href="" style="margin-left: 10px" id="" offer_id={{$offer->id}} class="btn btn-danger delete_btn">{{__("messages.Delete Ajax")}}</a>
+                <a  style="margin-left: 10px"href="{{url('ajax-offers/edit/'.$offer->id)}}" id="" offer_id={{$offer->id}} class="btn btn-success ">{{__("messages.update Ajax")}}</a>
+
 
            </td>
             

@@ -36,7 +36,13 @@ return [
  "Offer not Existed" => "هذا العرض عير موجود ",
  "Successful Deleted Offer" => "تم حذف العرض بنجاح ",
  "Failed Added Your Offer please Try Again" => "فشل في اضافة البيانات  برجاء حاول مرة اخري",
- "Delete Ajax" => "حدف بالاجاكس"
+ "Delete Ajax" => "حدف بالاجاكس",
+ "This offer Not Found" => "هذا العرض غير موجود",
+ "update Ajax" => "تحديث بالاجاكس",
+ "successful updated your offer" => "تم تحديث العرض بنجاح",
+ "Login Admin" => "تسجيل دخول  الادمن ",
+ 
+
 
 
 

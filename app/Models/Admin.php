@@ -8,22 +8,21 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable implements  MustVerifyEmail
+class Admin extends Authenticatable 
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    // use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
+    protected $table = "admins";
     protected $fillable = [
         'name',
         'email',
         'password',
-        "mobile",
-        "expire",
-        "age"
+        
     ];
 
     /**
@@ -41,7 +40,7 @@ class User extends Authenticatable implements  MustVerifyEmail
      *
      * @var array<string, string>
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    // protected $casts = [
+    //     'email_verified_at' => 'datetime',
+    // ];
 }

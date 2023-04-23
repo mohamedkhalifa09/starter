@@ -10,6 +10,7 @@ use App\Models\Offer;
 use App\Http\Requests\OfferRequest;
 use App\Models\Video;
 use App\Traits\OfferTraits;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -93,14 +94,42 @@ class GrudController extends Controller
       }
       public function updateOffer(OfferRequest $re,$offer_id)
       {
-        $offer = Offer::select("id","name_ar","name_en","price","photo","details_en","details_ar")->find($offer_id);
-        if (!$offer) {
-          return redirect()->back();
+  
+        $offer = Offer::find($offer_id);
+        $offer->name_ar = $re->input("name_ar");
+        $offer->name_en = $re->input("name_en");
+        $offer->price = $re->input("price");
+        $offer->details_en = $re->input("details_en");
+        $offer->details_ar = $re->input("details_ar");
+        if ($re->hasfile("photo")) {
+
+          $destination =  "images/offers".$offer->photo;
+          if(File::exists($destination)){
+             File::delete($destination);
+          }
+          $file = $re->file("photo");
+          $file_extension  = $file -> getClientOriginalExtension();
+         $file_name = time().".".$file_extension;
+
+        $path = "images/offers";
+
+        $file-> move($path,$file_name);
+         $offer->photo =  $file_name ;
         }
 
-        // update offer
-       $offer->update($re->all());
+         $offer->update();
        return redirect()->back()->with(["success" => __("messages.Successful Update Your Offer")]);
+
+
+
+      //   $offer = Offer::select("id","name_ar","name_en","price","photo","details_en","details_ar")->find($offer_id);
+      //   if (!$offer) {
+      //     return redirect()->back();
+      //   }
+
+      //   // update offer
+      //  $offer->update($re->all());
+      //  return redirect()->back()->with(["success" => __("messages.Successful Update Your Offer")]);
 
       }
       public function deleteOffer($offer_id)
